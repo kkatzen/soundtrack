@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pearl Hacks</title>
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+<!-- CSS styles for standard search box -->
+
+<style type="text/css">
+
+	.booktitle {
+		text-align: center;
+	}
+
+	#tfheader{
+		/*background-color:#c3dfef;*/
+		position:absolute;
+		overflow:hidden;
+		height:150px;
+		width:400px;
+		top:50%;
+		left:50%;
+		margin-top:-125px;
+		margin-left:-200px;
+		background: rgba(240, 240, 240, 0.5);
+		padding:10px;
+		border:4px solid gray;
+		font:15px verdana;
+		font-color:gray;
+		text-align:center;
+		border-radius:15px;
+	}
+	#tfnewsearch{
+		float:center;
+		padding:20px;
+		opacity:1 !important;
+	}
+	.tftextinput{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		border:1px solid #0076a3; 
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+		width: 300px;
+	}
+	.tfbutton {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #0076a3; 
+		background: #0095cd;
+		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.tfbutton:hover {
+		text-decoration: none;
+		background: #007ead;
+		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	}
+	/* Fixes submit button height problem in Firefox */
+	.tfbutton::-moz-focus-inner {
+	  border: 0;
+	  float: center;
+	}
+	.tfclear{
+		clear:both;
+	}
+	.mason-child img {
+		float:left;
+		margin-right: 20px;
+	}
+
+	.mason-parent {
+    -moz-column-count: 3;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 10px;
+    column-count: 3;
+    column-gap: 10px;
+    width: 90%;
+    margin:auto;
+    }
+
+    .mason-child{
+        display: inline-block; /* Display inline-block, and absolutely NO FLOATS! */
+        margin-top: 20px;
+        width: 90%;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 1px 1px 1px gray;
+		background: rgba(240, 240, 240, 0.5);
+		padding:10px;
+		border:4px solid gray;
+		font:15px verdana;
+		font-color:gray;
+		border-radius:15px;
+    }
+
+</style>
+</head>
+<body background = "background.jpg" bgproperties="fixed">
+
+	<!-- HTML for SEARCH BAR -->
+	<div id="tfheader">
+		<form id="tfnewsearch" method="post" action="search.php">
+				<div>
+		        	<input type="text" class="tftextinput" name="term" size="100" placeholder = "Book Title">
+		        </div>
+		        <br>
+		        <div>
+		        	<input type="text" class="tftextinput" name="term1" size="100" placeholder = "Author">
+		        </div>
+		        <br>
+		        <div>
+		        	<input type="submit" value="search" class="tfbutton">
+		    	</div>
+		</form>
+	<div class="tfclear"></div>
+
+	</div>
+
+
