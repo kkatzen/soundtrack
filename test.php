@@ -57,8 +57,6 @@ foreach($authorz as $a){
 $description = $volInfo->{'description'};
 if($description == NULL){
 	echo '<div id="error">Sorry, not enough data could be collected about this book.</div>';
-	exit();
-	
 }
 $publishedDate = $volInfo->{'publishedDate'};
 
@@ -179,7 +177,6 @@ foreach($lyrickeywords as $keyword){
 }
 if(count($mySpotifyTracks) == 0){
 	echo '<div id="error">Sorry, not enough data could be collected about this book.</div>';
-	exit();
 }
 foreach($mySpotifyTracks as $track){
 	$tracklist .= $track . ",";
