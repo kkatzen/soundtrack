@@ -57,6 +57,7 @@ foreach($authorz as $a){
 $description = $volInfo->{'description'};
 if($description == NULL){
 	echo '<div id="error">Sorry, not enough data could be collected about this book.</div>';
+	
 }
 $publishedDate = $volInfo->{'publishedDate'};
 
@@ -167,9 +168,10 @@ function tracks_by_keyword($lyrickeyword)
 
 $mySpotifyTracks = array();
 
-
+/*
 
 foreach($lyrickeywords as $keyword){
+
 	if(count($mySpotifyTracks) < 10){
 		if(is_string($keyword))
 			$mySpotifyTracks = array_merge($mySpotifyTracks,tracks_by_keyword($keyword));
@@ -182,7 +184,10 @@ foreach($mySpotifyTracks as $track){
 	$tracklist .= $track . ",";
 }
 trim($tracklist, ",");
+*/
 
+print "<div id = 'container'>";
+print "<div class = 'info'>";
 print "<h1 class = 'booktitle'>";
 
 echo $title;
@@ -191,16 +196,23 @@ print "</h1>";
 
 print "<h2 class = 'author'>";
 echo $author;
+
 print "</h2>";
+print "</div>";
+echo "<br />";
+echo "<center><a href='search_header.html' class = 'tfbutton'>Start New Search</a></center>";
+
 //echo $publishedDate;
 echo "<br />";
 //echo $description;
 echo "<br />";
 
-print "<img src='" . $largeImage . "' style='float:left' width = '350' height = '450'/>";
-echo "<div style='float:right;'>";
-echo '<iframe width="350" height="450" src="https://embed.spotify.com/?uri=spotify:trackset:Browse Playlist Here:' . $tracklist . '" frameborder="0" allowtransparency="true" view="list"></iframe>';
+echo "<div style='margin:auto;'>";
+echo '<center><iframe width="600" height="450" src="https://embed.spotify.com/?uri=spotify:trackset:Browse Playlist Here:' . $tracklist . '" frameborder="0" allowtransparency="true" view="list"></iframe></center>';
+//print "<img src='" . $largeImage . "' style='float:right' width = '350' height = '450'/>";
+echo "<br>";
 echo "</div>";
+print "</div>";
 
 
 //print "<h2>" . $lyrickeyword . "</h2>";
