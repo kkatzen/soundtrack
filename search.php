@@ -47,33 +47,10 @@ $totalitems = $obj->{'items'}; // 12345
 echo "<script>";
 echo "removeSearch();";
 echo "</script>";
-<<<<<<< HEAD
 
-
-for ($i = 1; $i < count($totalitems); $i++) {
-	$item = $totalitems[$i];
-	$volumeinfo = $item->{'volumeInfo'}; // 12345
-	$id = $item->{'id'}; // 12345
-	$name = $volumeinfo->{'title'}; // 12345
-	$authors = $volumeinfo->{'authors'}; // 12345
-	$author = $authors[0]; // 12345
-
-	$imageLink = $volumeinfo->{'imageLinks'};
-	$largeImage = $imageLink->{'thumbnail'};
-
-	if (strpos(strtolower($author), strtolower($term1)) !== false) {
-		echo "<a href='test.php?id=" . $id ."'>";
-		echo "<div class='mason-child id =" . $id . "'>";
-		print "<img src='" . $largeImage . "' />";
-		echo "<h3>";
-		echo $name;
-		echo '</h3>';
-		echo $author;
-		echo "</div>";
-		echo "</a>";
-=======
-echo "<div class='mason-parent'>";
-if(count($totalitems) != 0){
+if(count($totalitems) !==0){
+	echo "<div class='mason-parent'>";
+	
 	for ($i = 1; $i < count($totalitems); $i++) {
 		$item = $totalitems[$i];
 		$volumeinfo = $item->{'volumeInfo'}; // 12345
@@ -81,26 +58,27 @@ if(count($totalitems) != 0){
 		$name = $volumeinfo->{'title'}; // 12345
 		$authors = $volumeinfo->{'authors'}; // 12345
 		$author = $authors[0]; // 12345
-
+	
 		$imageLink = $volumeinfo->{'imageLinks'};
 		$largeImage = $imageLink->{'thumbnail'};
 	
-		//if (strpos(strtolower($author), strtolower($term1)) !== false) {
-			echo "<div class='mason-child'>";
-			print "<a href='test.php?id=" . $id ."'><img src='" . $largeImage . "' /></a>";
-	
-			echo "<h3><a href='test.php?id=" . $id ."'>";
+		//if (strpos(strtolower($author), strtolower($term)) !== false) {
+			echo "<a href='test.php?id=" . $id ."'>";
+			echo "<div class='mason-child id =" . $id . "'>";
+			print "<img src='" . $largeImage . "' />";
+			echo "<h3>";
 			echo $name;
-			echo '</a></h3>';
+			echo '</h3>';
 			echo $author;
 			echo "</div>";
-		//}
+			echo "</a>";
 	
->>>>>>> d1e63166f4d3539317e2c0db079df773d5f2ce24
+	//	}
 	}
 	echo "</div>";
+
 }else {
-	echo '</div><div id="error">Your search returned no results.  Please try again.</div>
+	echo '<div id="error">Your search returned no results.  Please try again.</div>
 		<div id="tfheader">
 		<form id="tfnewsearch" method="post" action="search.php">
 				<div>
