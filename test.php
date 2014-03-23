@@ -183,7 +183,10 @@ print "<h1 class = 'booktitle'>";
 echo $title;
 
 print "</h1>";
+
+print "<h2 class = 'author'>";
 echo $author;
+print "</h2>";
 //echo $publishedDate;
 echo "<br />";
 //echo $description;

@@ -54,14 +54,15 @@ for ($i = 1; $i < count($totalitems); $i++) {
 	$largeImage = $imageLink->{'thumbnail'};
 
 	if (strpos(strtolower($author), strtolower($term1)) !== false) {
-		echo "<div class='mason-child'>";
-		print "<a href='test.php?id=" . $id ."'><img src='" . $largeImage . "' /></a>";
-
-		echo "<h3><a href='test.php?id=" . $id ."'>";
+		echo "<a href='test.php?id=" . $id ."'>";
+		echo "<div class='mason-child id =" . $id . "'>";
+		print "<img src='" . $largeImage . "' />";
+		echo "<h3>";
 		echo $name;
-		echo '</a></h3>';
+		echo '</h3>';
 		echo $author;
 		echo "</div>";
+		echo "</a>";
 	}
 
 }
