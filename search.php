@@ -22,6 +22,12 @@ if(isset($_REQUEST['term1']) && $_REQUEST['term1'] !== ""){
 
 require("search_header.html");
 require("test.php");
+
+if($terms == '' && $terms2 == ''){
+	echo '<div id="error">Your search returned no results.  Please try again.</div>';
+	exit();
+}
+
 ?>
 
 
@@ -34,6 +40,7 @@ if(isset($terms) && isset($terms2)){
 }else if(!isset($terms2)){
 	$url = "https://www.googleapis.com/books/v1/volumes?q=" . $terms ."&maxResults=20";
 }
+
   $content= mb_convert_encoding(
     file_get_contents($url),
     "HTML-ENTITIES",
