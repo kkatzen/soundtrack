@@ -57,7 +57,6 @@ foreach($authorz as $a){
 $description = $volInfo->{'description'};
 if($description == NULL){
 	echo '<div id="error">Sorry, not enough data could be collected about this book.</div>';
-	exit();
 	
 }
 $publishedDate = $volInfo->{'publishedDate'};
@@ -112,6 +111,7 @@ $lyrickeywords[] = array();
 
 function tracks_by_keyword($lyrickeyword)
 {
+	$count = 0;
 	$artistsList = array();
 		$lyricsearch = "http://api.musixmatch.com/ws/1.1/track.search?q_lyrics=". str_replace(' ', '%20', trim($lyrickeyword)) . "&apikey=efcc4f8f45cf1a315ce82043ae30f30d&page_size=10&f_lyrics_language=En&s_track_rating=desc";
 		  $mycontent= mb_convert_encoding(
@@ -127,38 +127,44 @@ function tracks_by_keyword($lyrickeyword)
 		$tracklist = $body2->{'track_list'}; // 12345
 		
 		for ($i = 0; $i < count($tracklist); $i++) {
-			$track = $tracklist[$i];
-			//var_dump($track);
-	
-			$track = $track->{'track'}; // 12345
-			$tid = $track->{'track_id'}; // 12345
-			$name = $track->{'track_name'}; // 12345
-			$artist = $track->{'artist_name'}; // 12345
-			if(!in_array($artist,$artistsList)){
-				$artistsList[] = $artist;
-	
-							
-				$spotify = "http://ws.spotify.com/search/1/track.json?q=" . str_replace(' ', '%20', trim($name)) . "%20" .  str_replace(' ', '%20', trim($artist));
-				$spotifyContent= mb_convert_encoding(
-				file_get_contents($spotify),
-				"HTML-ENTITIES",
-				"UTF-8"
-				);
-				$spotify_object = json_decode($spotifyContent);
-				$spotify_tracks = $spotify_object->{'tracks'}; // 12345
-				$spotify_track = $spotify_tracks[0];
-				$name2 = $spotify_track->{'name'}; // 12345
-	
+			$count++;
+				if($count > 3){
+				$track = $tracklist[$i];
+				//var_dump($track);
+		
+				$track = $track->{'track'}; // 12345
+				$tid = $track->{'track_id'}; // 12345
+				$name = $track->{'track_name'}; // 12345
+				$artist = $track->{'artist_name'}; // 12345
+				if(!in_array($artist,$artistsList)){
+					$artistsList[] = $artist;
+		
+								
+					$spotify = "http://ws.spotify.com/search/1/track.json?q=" . str_replace(' ', '%20', trim($name)) . "%20" .  str_replace(' ', '%20', trim($artist));
+					$spotifyContent= mb_convert_encoding(
+					file_get_contents($spotify),
+					"HTML-ENTITIES",
+					"UTF-8"
+					);
+					$spotify_object = json_decode($spotifyContent);
+					$spotify_tracks = $spotify_object->{'tracks'}; // 12345
+					$spotify_track = $spotify_tracks[0];
+					$name2 = $spotify_track->{'name'}; // 12345
+		
+					
+					$artists = $spotify_track->{'artists'}; // 12345
+					$artist = $artists[0];
+					$artist_name = $artist->{'name'}; // 12345
 				
-				$artists = $spotify_track->{'artists'}; // 12345
-				$artist = $artists[0];
-				$artist_name = $artist->{'name'}; // 12345
-			
-				if (stristr($name2,$name) !== true && stristr($artist_name,$artist) !== true) {
-					$href = $spotify_track->{'href'}; // 12345
-					$trackURL = explode(":",$href);
-					if($trackURL[2] !== null){
-						$theReturnTracks[]  = $trackURL[2];
+					if (stristr($name2,$name) !== true && stristr($artist_name,$artist) !== true) {
+						$href = $spotify_track->{'href'}; // 12345
+						$trackURL = explode(":",$href);
+						if($trackURL[2] !== null){
+							$theReturnTracks[]  = $trackURL[2];
+							echo "
+<!-- " . $name2 . "-->";
+	
+						}
 					}
 				}
 			}
@@ -172,15 +178,25 @@ $mySpotifyTracks = array();
 
 
 foreach($lyrickeywords as $keyword){
-	if(count($mySpotifyTracks) < 10){
-		if(is_string($keyword))
-			$mySpotifyTracks = array_merge($mySpotifyTracks,tracks_by_keyword($keyword));
+	if(!is_array($keyword)){
+		echo "
+		
+<!--  KEYWORD:::::: " . $keyword . "-->
+	";
+	
+		if(count($mySpotifyTracks) < 10){
+			if($mySpotifyTracks == NULL)
+				$mySpotifyTracks = tracks_by_keyword($keyword);
+			else if(is_string($keyword))
+				$mySpotifyTracks = array_merge($mySpotifyTracks,tracks_by_keyword($keyword));
+		}
 	}
 }
+
 if(count($mySpotifyTracks) == 0){
 	echo '<div id="error">Sorry, not enough data could be collected about this book.</div>';
-	exit();
 }
+
 foreach($mySpotifyTracks as $track){
 	$tracklist .= $track . ",";
 }
@@ -194,15 +210,20 @@ print "</h1>";
 
 print "<h2 class = 'author'>";
 echo $author;
+
 print "</h2>";
+echo "<br />";
+echo "<center><a href='search_header.html'>New Search</a></center>";
+
 //echo $publishedDate;
 echo "<br />";
 //echo $description;
 echo "<br />";
 
-print "<img src='" . $largeImage . "' style='float:left' width = '350' height = '450'/>";
-echo "<div style='float:right;'>";
-echo '<iframe width="350" height="450" src="https://embed.spotify.com/?uri=spotify:trackset:Browse Playlist Here:' . $tracklist . '" frameborder="0" allowtransparency="true" view="list"></iframe>';
+echo "<div style='margin:auto;'>";
+echo '<center><iframe width="600" height="450" src="https://embed.spotify.com/?uri=spotify:trackset:Browse Playlist Here:' . $tracklist . '" frameborder="0" allowtransparency="true" view="list"></iframe></center>';
+//print "<img src='" . $largeImage . "' style='float:right' width = '350' height = '450'/>";
+
 echo "</div>";
 
 
