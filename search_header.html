@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href='http://fonts.googleapis.com/css?family=Jacques+Francois' rel='stylesheet' type='text/css'>
 <title>Pearl Hacks</title>
 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
 <!-- CSS styles for standard search box -->
@@ -9,7 +10,20 @@
 <style type="text/css">
 
 	.booktitle,.author {
-		text-align: center;
+/*		position:absolute;
+		overflow:hidden;
+		top:50%;
+		left:50%;
+		margin-left: -700px;
+		margin-right: auto;
+		background: rgba(240, 240, 240, 0.5);
+		padding:10px;
+		border:4px solid gray;
+		font: verdana;
+		font-color:gray;*/
+		text-align:center;
+		font-family: 'Jacques Francois', serif;
+	/*	border-radius:15px; */
 	}
 
 	#tfheader{
@@ -127,10 +141,34 @@
 		font-size: 20pt;
 		text-align: center;
 	}
+
+	#container {
+		margin: 0 auto;
+		width:600px;
+		background: rgba(240, 240, 240, 0.5);
+		padding:10px;
+		border:4px solid gray;
+		font: verdana;
+		font-color:gray;
+		text-align:center;
+		border-radius:15px;
+	}
+
+	.info {
+
+		padding:10px;
+		border:4px solid gray;
+		border-radius:30px;
+		background: rgba(240, 240, 240, 1);
+	}
+
 </style>
 </head>
 <body background = "background.jpg" bgproperties="fixed">
-
+<!-- <div id = "container" style = "display:none;">
+	hi
+</div>
+ -->
 	<!-- HTML for SEARCH BAR -->
 	<div id="tfheader">
 		<form id="tfnewsearch" method="post" action="search.php">

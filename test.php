@@ -175,9 +175,10 @@ function tracks_by_keyword($lyrickeyword)
 
 $mySpotifyTracks = array();
 
-
+/*
 
 foreach($lyrickeywords as $keyword){
+<<<<<<< HEAD
 	if(!is_array($keyword)){
 		echo "
 		
@@ -190,6 +191,12 @@ foreach($lyrickeywords as $keyword){
 			else if(is_string($keyword))
 				$mySpotifyTracks = array_merge($mySpotifyTracks,tracks_by_keyword($keyword));
 		}
+=======
+
+	if(count($mySpotifyTracks) < 10){
+		if(is_string($keyword))
+			$mySpotifyTracks = array_merge($mySpotifyTracks,tracks_by_keyword($keyword));
+>>>>>>> FETCH_HEAD
 	}
 }
 
@@ -201,7 +208,10 @@ foreach($mySpotifyTracks as $track){
 	$tracklist .= $track . ",";
 }
 trim($tracklist, ",");
+*/
 
+print "<div id = 'container'>";
+print "<div class = 'info'>";
 print "<h1 class = 'booktitle'>";
 
 echo $title;
@@ -212,8 +222,14 @@ print "<h2 class = 'author'>";
 echo $author;
 
 print "</h2>";
+<<<<<<< HEAD
 echo "<br />";
 echo "<center><a href='search_header.html'>New Search</a></center>";
+=======
+print "</div>";
+echo "<br />";
+echo "<center><a href='search_header.html' class = 'tfbutton'>Start New Search</a></center>";
+>>>>>>> FETCH_HEAD
 
 //echo $publishedDate;
 echo "<br />";
@@ -223,8 +239,13 @@ echo "<br />";
 echo "<div style='margin:auto;'>";
 echo '<center><iframe width="600" height="450" src="https://embed.spotify.com/?uri=spotify:trackset:Browse Playlist Here:' . $tracklist . '" frameborder="0" allowtransparency="true" view="list"></iframe></center>';
 //print "<img src='" . $largeImage . "' style='float:right' width = '350' height = '450'/>";
+<<<<<<< HEAD
 
+=======
+echo "<br>";
+>>>>>>> FETCH_HEAD
 echo "</div>";
+print "</div>";
 
 
 //print "<h2>" . $lyrickeyword . "</h2>";
