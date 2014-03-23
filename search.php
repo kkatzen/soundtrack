@@ -25,7 +25,6 @@ require("test.php");
 
 if($terms == '' && $terms2 == ''){
 	echo '<div id="error">Your search returned no results.  Please try again.</div>';
-	exit();
 }
 
 ?>

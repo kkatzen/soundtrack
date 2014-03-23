@@ -3,11 +3,114 @@
 <html>
 <head>
 <link href='http://fonts.googleapis.com/css?family=Jacques+Francois' rel='stylesheet' type='text/css'>
-<title>Pearl Hacks</title>
+<title>Play Book</title>
 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
 <!-- CSS styles for standard search box -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+$(window).load(function(){
+      $("#loading").hide();
+})
+</script>
 
 <style type="text/css">
+
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #29d;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 2px;
+
+  -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  -o-transition: width 1s;
+  transition: width 1s;
+}
+
+.pace .pace-progress-inner {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -moz-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  -o-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+.pace .pace-activity {
+  display: block;
+  position: fixed;
+  z-index: 2000;
+  top: 15px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 10px;
+  -webkit-animation: pace-spinner 400ms linear infinite;
+  -moz-animation: pace-spinner 400ms linear infinite;
+  -ms-animation: pace-spinner 400ms linear infinite;
+  -o-animation: pace-spinner 400ms linear infinite;
+  animation: pace-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes pace-spinner {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes pace-spinner {
+  0% { -moz-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes pace-spinner {
+  0% { -o-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes pace-spinner {
+  0% { -ms-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes pace-spinner {
+  0% { transform: rotate(0deg); transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+body {
+		font-family: 'Jacques Francois', serif;
+		background-image: url("background.jpg");
+		background-attachment: fixed;
+		background-position: top center;
+}
+	a:link, a:visited{
+		color: #232222;
+	}
+	a:hover {
+		color: gray;
+	}
+	.dumbparagraph a:hover {
+		color: #118ACE;
+	}
 
 	.booktitle,.author {
 /*		position:absolute;
@@ -32,9 +135,7 @@
 		overflow:hidden;
 		height:150px;
 		width:400px;
-		top:50%;
 		left:50%;
-		margin-top:-125px;
 		margin-left:-200px;
 		background: rgba(240, 240, 240, 0.5);
 		padding:10px;
@@ -160,16 +261,46 @@
 		border:4px solid gray;
 		border-radius:30px;
 		background: rgba(240, 240, 240, 1);
-	}
+		/*
+		-webkit-filter: blur(5px); -moz-filter: blur(5px); -o-filter: blur(5px); -ms-filter: blur(5px); filter: blur(5px);
+		*/
 
+	}
+	.thisisthebest {
+		text-align: center;
+		color: white;
+		font-size: 15pt;
+		padding-left: 30px;
+	}
+#loading {
+    position:absolute;
+    width:150px;
+    top:200px;
+    left:50%;
+    z-index: 99;
+    margin-left:-75px;
+    text-align:center;
+    padding: 10px;
+	background: rgba(0, 0, 0, 0.8);
+    color: black;
+    border: 2px solid white;
+}
 </style>
 </head>
-<body background = "background.jpg" bgproperties="fixed">
+<body>
+<div id="loading">
+    <img src="ajax-loader.gif" alt="loading.." />
+</div>
+
 <!-- <div id = "container" style = "display:none;">
 	hi
 </div>
  -->
 	<!-- HTML for SEARCH BAR -->
+	<p class="thisisthebest">
+	<a href="search_header.html"><img  src="logo.png" /></a><br />
+	Listen to playlists inspired by your favorite books.
+	</p>
 	<div id="tfheader">
 		<form id="tfnewsearch" method="post" action="search.php">
 				<div>
