@@ -196,8 +196,7 @@ body {
 		clear:both;
 	}
 	.mason-child img {
-		float:left;
-		margin-right: 20px;
+		float:right;
 	}
 
 	.mason-parent {
@@ -210,6 +209,30 @@ body {
     width: 90%;
     margin:auto;
     }
+    
+@media all and (max-width: 850px) and (min-width: 600px) {
+  	.mason-parent {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+
+    }
+}
+
+@media (max-width: 600px) {
+	.mason-parent {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+
+    }
+}
+@media (min-width: 850px) {
+	.mason-parent {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+
+    }
+}
+
 
     .mason-child{
         display: inline-block; /* Display inline-block, and absolutely NO FLOATS! */
@@ -261,9 +284,7 @@ body {
 		border:4px solid gray;
 		border-radius:30px;
 		background: rgba(240, 240, 240, 1);
-		/*
-		-webkit-filter: blur(5px); -moz-filter: blur(5px); -o-filter: blur(5px); -ms-filter: blur(5px); filter: blur(5px);
-		*/
+		
 
 	}
 	.thisisthebest {
@@ -299,7 +320,10 @@ body {
 	<!-- HTML for SEARCH BAR -->
 	<p class="thisisthebest">
 	<a href="search_header.html"><img  src="logo.png" /></a><br />
-	Listen to playlists inspired by your favorite books.
+	Listen to playlists inspired by your favorite books.<br />
+	<span style="
+    font-size: 11pt;">Please be patient as playlist generation can take several seconds.</span>
+
 	</p>
 	<div id="tfheader">
 		<form id="tfnewsearch" method="post" action="search.php">
